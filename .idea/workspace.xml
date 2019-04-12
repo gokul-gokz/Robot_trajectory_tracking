@@ -12,8 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="812aac19-fe0a-4b37-89c9-ef1290508e7a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Robot.dir/src/Robot.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Robot.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Robot.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Robot.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Robot.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -53,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Robot.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+            <state relative-caret-position="407">
+              <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -139,12 +137,12 @@
       <option name="presentableId" value="Default" />
       <updated>1555027302402</updated>
       <workItem from="1555027307807" duration="4820000" />
-      <workItem from="1555044306872" duration="4674000" />
+      <workItem from="1555044306872" duration="4825000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9494000" />
+    <option name="totallyTimeSpent" value="9645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="992" y="24" width="928" height="1056" extended-state="4" />
@@ -195,8 +193,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Robot.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+        <state relative-caret-position="407">
+          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>

@@ -54,7 +54,7 @@ void Robot::print() {
 int main()
 {
     Eigen::MatrixXd m1(2,4);
-    m1<<1,1,1,1,1,1,1,1;
+    m1<<1,1,1,1,2,1,1,1;
     Robot R1(2,m1);
     float j_angles[2]={1,2};
     R1.Forward_Kinematics(j_angles);
