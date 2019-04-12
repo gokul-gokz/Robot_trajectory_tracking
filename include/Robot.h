@@ -6,14 +6,11 @@
 class Robot
 {
 private:
-    int no_of_joints;
-    float *link_lengths=NULL;
-    float *joint_offset=NULL;
-    float *link_offset=NULL;
-    float *joint_angle=NULL;
+     int no_of_joints;
+     Eigen::MatrixXd Dh_params;
 
 public:
-    Robot(int n_joints,float l_length[],float j_offset[], float l_offset[], float j_angle[]);
+    Robot(int n_joints,Eigen::MatrixXd m1);
 
     std::vector<float> Inverse_kinematics(float cartesian_coordinates[6]);
 
