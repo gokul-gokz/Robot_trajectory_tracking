@@ -56,9 +56,12 @@ std::vector<std::vector<float> > trajectory_waypoints( const char input_file[])
 int main()
 {
     std::vector<std::vector<float> > Waypoints;
+    std::vector<float> angle_diff;
     float j_min_limits[3]={-M_PI,-M_PI/2,-M_PI};
     float j_max_limits[3]={M_PI,M_PI/2,M_PI};
     char input_file[60]="/home/gokul/Robot_Ik_trajectory_tracking/input.txt";
+    float t=0;
+    float time_step;
     Waypoints=trajectory_waypoints(input_file);
     Eigen::MatrixXd m1(3,4);
     m1<<90,10,0,0,0,5,0,0,0,5,0,0;
@@ -66,5 +69,24 @@ int main()
     float j_angles[2]={1,2};
     R1.Forward_Kinematics(j_angles);
     R1.print();
+    while(1)
+    {
+        for (int i=0;i<Waypoints.size()-1;i++)
+        {
+            float t_prev=t;
+            float t=Waypoints[i][3];
+            float time_step=(t-t_prev)*30;
+            std::vector<float> p1=R1.Inverse_kinematics(Waypoints[i]);
+            std::vector<float> p2=R1.Inverse_kinematics(Waypoints[i+1]);
+            for (int i=0;i<p1.size();i++)
+            {
+                angle_diff.push_back(p1[i]-p2[i]);
+            }
+
+
+
+
+        }
+    }
     return 0;
 }
