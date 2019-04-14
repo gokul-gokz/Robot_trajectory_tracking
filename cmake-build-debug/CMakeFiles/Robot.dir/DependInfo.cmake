@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/gokul/Robot_Ik_trajectory_tracking/src/Robot.cpp" "/home/gokul/Robot_Ik_trajectory_tracking/cmake-build-debug/CMakeFiles/Robot.dir/src/Robot.cpp.o"
+  "/home/gokul/Robot_Ik_trajectory_tracking/src/main.cpp" "/home/gokul/Robot_Ik_trajectory_tracking/cmake-build-debug/CMakeFiles/Robot.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

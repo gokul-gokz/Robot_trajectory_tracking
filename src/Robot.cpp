@@ -1,11 +1,18 @@
 #include<Robot.h>
 #include<math.h>
 
-Robot:: Robot(int n_joints,Eigen::MatrixXd m1)
+Robot:: Robot(int n_joints,Eigen::MatrixXd m1, float j_min_limits[], float j_max_limits[])
 {
     no_of_joints=n_joints;
     Dh_params.resize(no_of_joints,4);
     Dh_params=m1;
+    joint_min_limits=new float[n_joints];
+    joint_max_limits=new float[n_joints];
+    for(int i=0;i<n_joints;i++)
+    {
+        joint_min_limits[i]=j_min_limits[i];
+        joint_max_limits[i]=j_max_limits[i];
+    }
 }
 
 std::vector<float> Robot::Forward_Kinematics(float joint_angles[])
@@ -44,20 +51,21 @@ std::vector<float> Robot::Forward_Kinematics(float joint_angles[])
 
 }
 
+Robot::~Robot()
+{
+    delete[] joint_max_limits;
+    delete[] joint_min_limits;
+}
+
+//std::vector<float> Inverse_kinematics(float cartesian_coordinates[6])
+//{
+//    return NULL;
+//}
+
 void Robot::print() {
     for (int i=0;i<no_of_joints;i++)
     {
         for (int j=0;j<4;j++)
             std::cout<<Dh_params(i,j)<<std::endl;
     }
-}
-int main()
-{
-    Eigen::MatrixXd m1(2,4);
-    m1<<1,1,1,1,2,1,1,1;
-    Robot R1(2,m1);
-    float j_angles[2]={1,2};
-    R1.Forward_Kinematics(j_angles);
-    R1.print();
-    return 0;
 }

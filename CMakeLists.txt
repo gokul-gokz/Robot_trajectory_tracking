@@ -6,7 +6,7 @@ include_directories(
         include
         ${Eigen3_INCLUDE_DIRS}
 )
-add_executable(Robot src/Robot.cpp)
+add_executable(Robot src/Robot.cpp src/main.cpp)
 target_link_libraries (Robot Eigen3::Eigen)
 
 #include_directories( include ${OpenCV_INCLUDE_DIRS} )

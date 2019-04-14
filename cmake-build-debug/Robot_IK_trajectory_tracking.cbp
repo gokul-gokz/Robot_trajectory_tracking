@@ -91,6 +91,9 @@
 		<Unit filename="/home/gokul/Robot_Ik_trajectory_tracking/src/Robot.cpp">
 			<Option target="Robot"/>
 		</Unit>
+		<Unit filename="/home/gokul/Robot_Ik_trajectory_tracking/src/main.cpp">
+			<Option target="Robot"/>
+		</Unit>
 		<Unit filename="/home/gokul/Robot_Ik_trajectory_tracking/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
