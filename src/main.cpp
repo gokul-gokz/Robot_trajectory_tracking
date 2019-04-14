@@ -61,10 +61,12 @@ int main()
     char input_file[60]="/home/gokul/Robot_Ik_trajectory_tracking/input.txt";
     Waypoints=trajectory_waypoints(input_file);
     Eigen::MatrixXd m1(3,4);
-    m1<<90,10,0,0,0,5,0,0,0,5,0,0;
+    m1<<M_PI/2,10,0,0,0,5,0,0,0,5,0,0;
     Robot R1(3,m1,j_min_limits,j_max_limits);
-    float j_angles[2]={1,2};
+    float j_angles[3]={1,1,3};
     R1.Forward_Kinematics(j_angles);
-    R1.print();
+    float pos[3]={5,8,0.42};
+    R1.Inverse_kinematics(pos);
+   // R1.print();
     return 0;
 }
