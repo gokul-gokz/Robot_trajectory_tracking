@@ -60,9 +60,9 @@ int main()
     float j_max_limits[3]={M_PI,M_PI/2,M_PI};
     char input_file[60]="/home/gokul/Robot_Ik_trajectory_tracking/input.txt";
     Waypoints=trajectory_waypoints(input_file);
-    Eigen::MatrixXd m1(2,4);
-    m1<<1,1,1,1,2,1,1,1;
-    Robot R1(2,m1,j_min_limits,j_max_limits);
+    Eigen::MatrixXd m1(3,4);
+    m1<<90,10,0,0,0,5,0,0,0,5,0,0;
+    Robot R1(3,m1,j_min_limits,j_max_limits);
     float j_angles[2]={1,2};
     R1.Forward_Kinematics(j_angles);
     R1.print();

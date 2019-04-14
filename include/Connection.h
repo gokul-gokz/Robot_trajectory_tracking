@@ -9,6 +9,7 @@ class Connection
         int close();
 
         int send(std::vector<unsigned char> &data);
+
 	//send data to the robot. use explicit pointer convertion
 
         int receive(std::vector<unsigned chard> &data);
