@@ -11,14 +11,18 @@ private:
      Eigen::MatrixXd HT_BasetoEF;
      float *joint_min_limits;
      float *joint_max_limits;
+     // temporary fix
+    std::vector<std::vector<float> > IK_solutions;
+    std::vector<std::vector<float> > valid_ik_solutions;
 
 
 public:
     Robot(int n_joints,Eigen::MatrixXd m1,float j_min_limits[],float j_max_limits[]);
     ~Robot();
     std::vector<float> Forward_Kinematics(float joint_angles[]);
-    //std::vector<float> Inverse_kinematics();
     void Inverse_kinematics(float cartesian_positions[]);
+    void validate_IK_solutions();
+
 
 
 

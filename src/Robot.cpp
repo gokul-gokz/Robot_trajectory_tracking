@@ -14,6 +14,7 @@ Robot:: Robot(int n_joints,Eigen::MatrixXd m1, float j_min_limits[], float j_max
         joint_min_limits[i]=j_min_limits[i];
         joint_max_limits[i]=j_max_limits[i];
     }
+
 }
 
 std::vector<float> Robot::Forward_Kinematics(float joint_angles[])
@@ -60,7 +61,7 @@ Robot::~Robot()
 
 void Robot::Inverse_kinematics(float cartesian_positions[])
 {
-    float theta1,theta2,theta3,D;
+    float theta1,theta3[2],theta2[4],D;
     float a1=Dh_params(0,1);
     float a2=Dh_params(1,1);
     float a3=Dh_params(2,1);
@@ -70,24 +71,72 @@ void Robot::Inverse_kinematics(float cartesian_positions[])
     float x=cartesian_positions[0];
     float y=cartesian_positions[1];
     float z=cartesian_positions[2];
+    //std::vector<std::vector<float> > All_IK_solution;
     std::vector<float> IK_solution;
     theta1=atan2(HT_BasetoEF(1,3),HT_BasetoEF(0,3));
     D=(pow(x-a1*cos(theta1),2)+pow(y-a1*sin(theta1),2)+pow(z,2)-pow(a2,2)-pow(a3,2))/(2*a2*a3);
-    theta3=atan2(-sqrt(1-pow(D,2)),D);
-    theta2=atan2(z,sqrt(pow(x-a1*cos(theta1),2)+pow(y-a1*sin(theta1),2)))-atan2(a3*sin(theta3),a2+a3*cos(theta3));
-    std::cout<<"theta1="<<theta1<<std::endl;
-    std::cout<<"theta2="<<theta2<<std::endl;
-    std::cout<<"theta3="<<theta3<<std::endl;
-    IK_solution.push_back(1);
-    IK_solution.push_back(theta2);
-    IK_solution.push_back(theta3);
-    // IK_solution;
+    theta3[0]=atan2(sqrt(1-pow(D,2)),D);
+    theta3[1]=atan2(-sqrt(1-pow(D,2)),D);
+    theta2[0]=atan2(z,sqrt(pow(x-a1*cos(theta1),2)+pow(y-a1*sin(theta1),2)))-atan2(a3*sin(theta3[0]),a2+a3*cos(theta3[0]));
+    theta2[1]=atan2(z,-sqrt(pow(x-a1*cos(theta1),2)+pow(y-a1*sin(theta1),2)))-atan2(a3*sin(theta3[0]),a2+a3*cos(theta3[0]));
+    theta2[2]=atan2(z,sqrt(pow(x-a1*cos(theta1),2)+pow(y-a1*sin(theta1),2)))-atan2(a3*sin(theta3[1]),a2+a3*cos(theta3[1]));
+    theta2[3]=atan2(z,-sqrt(pow(x-a1*cos(theta1),2)+pow(y-a1*sin(theta1),2)))-atan2(a3*sin(theta3[1]),a2+a3*cos(theta3[1]));
+
+    for(int i=0;i<2;i++)
+    {
+
+    }
+
+
+    IK_solution.push_back(fmod(theta1,2*M_PI));
+    IK_solution.push_back(fmod(theta2[0],2*M_PI));
+    IK_solution.push_back(fmod(theta3[0],2*M_PI));
+    IK_solutions.push_back(IK_solution);
+    IK_solution.clear();
+
+    IK_solution.push_back(fmod(theta1,2*M_PI));
+    IK_solution.push_back(fmod(theta2[1],2*M_PI));
+    IK_solution.push_back(fmod(theta3[0],2*M_PI));
+    IK_solutions.push_back(IK_solution);
+    IK_solution.clear();
+
+    IK_solution.push_back(fmod(theta1,2*M_PI));
+    IK_solution.push_back(fmod(theta2[2],2*M_PI));
+    IK_solution.push_back(fmod(theta3[1],2*M_PI));
+    IK_solutions.push_back(IK_solution);
+    IK_solution.clear();
+
+    IK_solution.push_back(fmod(theta1,2*M_PI));
+    IK_solution.push_back(fmod(theta2[3],2*M_PI));
+    IK_solution.push_back(fmod(theta3[1],2*M_PI));
+    IK_solutions.push_back(IK_solution);
+    IK_solution.clear();
+    validate_IK_solutions();
+
+}
+
+void Robot:: validate_IK_solutions()
+{
+
+    for (int i=0;i<IK_solutions.size();i++)
+    {
+        if (IK_solutions[i][0]>=joint_min_limits[0] and IK_solutions[i][1]>=joint_min_limits[1] and IK_solutions[i][2]>=joint_min_limits[2] and IK_solutions[i][0]<=joint_max_limits[0] and IK_solutions[i][1]<=joint_max_limits[1] and IK_solutions[i][2]<=joint_max_limits[2])
+            valid_ik_solutions.push_back( IK_solutions[i]);
+      }
 }
 
 void Robot::print() {
-    for (int i=0;i<no_of_joints;i++)
-    {
-        for (int j=0;j<4;j++)
-            std::cout<<Dh_params(i,j)<<std::endl;
+   // for (int i=0;i<no_of_joints;i++)
+//    {
+//        for (int j=0;j<4;j++)
+//            std::cout<<Dh_params(i,j)<<std::endl;
+//    }
+
+    for (int i=0;i<valid_ik_solutions.size();i++) {
+
+        std::cout << "theta1=" << valid_ik_solutions[i][0] << std::endl;
+        std::cout << "theta2=" << valid_ik_solutions[i][1] << std::endl;
+        std::cout << "theta3=" << valid_ik_solutions[i][2] << std::endl;
+
     }
 }

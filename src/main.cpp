@@ -63,10 +63,10 @@ int main()
     Eigen::MatrixXd m1(3,4);
     m1<<M_PI/2,10,0,0,0,5,0,0,0,5,0,0;
     Robot R1(3,m1,j_min_limits,j_max_limits);
-    float j_angles[3]={1,1,3};
+    float j_angles[3]={2,1,3};
     R1.Forward_Kinematics(j_angles);
     float pos[3]={5,8,0.42};
     R1.Inverse_kinematics(pos);
-   // R1.print();
+    R1.print();
     return 0;
 }
