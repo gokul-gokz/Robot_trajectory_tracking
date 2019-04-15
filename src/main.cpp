@@ -66,7 +66,8 @@ int main()
     float j_angles[3]={2,1,3};
     R1.Forward_Kinematics(j_angles);
     float pos[3]={5,8,0.42};
-    R1.Inverse_kinematics(pos);
+
+   R1.Inverse_kinematics(pos);
     R1.print();
     return 0;
 }
