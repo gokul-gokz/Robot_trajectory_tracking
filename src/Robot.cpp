@@ -48,7 +48,7 @@ std::vector<float> Robot::Forward_Kinematics(float joint_angles[])
         {
             HT_BasetoEF=HT_BasetoEF*T;
         }
-        std::cout<<HT_BasetoEF<<std::endl;
+       // std::cout<<HT_BasetoEF<<std::endl;
     }
 
 }
@@ -124,9 +124,9 @@ void Robot:: validate_IK_solutions()
     {
         if (IK_solutions[i][0]>=joint_min_limits[0] and IK_solutions[i][1]>=joint_min_limits[1] and IK_solutions[i][2]>=joint_min_limits[2] and IK_solutions[i][0]<=joint_max_limits[0] and IK_solutions[i][1]<=joint_max_limits[1] and IK_solutions[i][2]<=joint_max_limits[2])
             valid_ik_solutions.push_back( IK_solutions[i]);
-            std::cout<<valid_ik_solutions[i][0];
-            std::cout<<valid_ik_solutions[i][1];
-            std::cout<<valid_ik_solutions[i][2];
+//            std::cout<<valid_ik_solutions[i][0];
+//            std::cout<<valid_ik_solutions[i][1];
+//            std::cout<<valid_ik_solutions[i][2];
       }
 }
 

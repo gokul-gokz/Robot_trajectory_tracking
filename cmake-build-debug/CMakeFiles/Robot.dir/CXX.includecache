@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+../include/Connection.h
+vector
+-
+
 ../include/Eigen/Cholesky
 Core
 ../include/Eigen/Core
@@ -1074,9 +1078,11 @@ vector
 Eigen/Dense
 -
 
-/home/gokul/Robot_Ik_trajectory_tracking/src/Robot.cpp
+/home/gokul/Robot_Ik_trajectory_tracking/src/main.cpp
 Robot.h
 -
-math.h
+fstream
+-
+Connection.h
 -
 
