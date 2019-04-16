@@ -216,7 +216,11 @@ CMakeFiles/Robot.dir/src/Robot.cpp.o
  ../include/Eigen/src/plugins/MatrixCwiseUnaryOps.h
  ../include/Robot.h
  /home/gokul/Robot_Ik_trajectory_tracking/src/Robot.cpp
+CMakeFiles/Robot.dir/src/connection.cpp.o
+ ../include/Connection.h
+ /home/gokul/Robot_Ik_trajectory_tracking/src/connection.cpp
 CMakeFiles/Robot.dir/src/main.cpp.o
+ ../include/Connection.h
  ../include/Eigen/Cholesky
  ../include/Eigen/Core
  ../include/Eigen/Dense

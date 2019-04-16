@@ -216,6 +216,10 @@ CMakeFiles/Robot.dir/src/Robot.cpp.o: ../include/Eigen/src/plugins/MatrixCwiseUn
 CMakeFiles/Robot.dir/src/Robot.cpp.o: ../include/Robot.h
 CMakeFiles/Robot.dir/src/Robot.cpp.o: ../src/Robot.cpp
 
+CMakeFiles/Robot.dir/src/connection.cpp.o: ../include/Connection.h
+CMakeFiles/Robot.dir/src/connection.cpp.o: ../src/connection.cpp
+
+CMakeFiles/Robot.dir/src/main.cpp.o: ../include/Connection.h
 CMakeFiles/Robot.dir/src/main.cpp.o: ../include/Eigen/Cholesky
 CMakeFiles/Robot.dir/src/main.cpp.o: ../include/Eigen/Core
 CMakeFiles/Robot.dir/src/main.cpp.o: ../include/Eigen/Dense

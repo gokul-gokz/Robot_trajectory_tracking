@@ -12,8 +12,8 @@ private:
      float *joint_min_limits;
      float *joint_max_limits;
      // temporary fix
-    std::vector<std::vector<float> > IK_solutions;
-    std::vector<std::vector<float> > valid_ik_solutions;
+     std::vector<std::vector<float> > IK_solutions;
+     std::vector<std::vector<float> > valid_ik_solutions;
 
 
 public:
@@ -22,7 +22,7 @@ public:
     std::vector<float> Forward_Kinematics(float joint_angles[]);
     void Inverse_kinematics(float cartesian_positions[]);
     void validate_IK_solutions();
-    std::vector<float> closest_IK_solutions(float current_position[]);
+    std::vector<float> closest_IK_solutions(float current_position[],float goal_position[]);
 
 
 

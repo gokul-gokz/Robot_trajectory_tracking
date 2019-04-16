@@ -150,6 +150,33 @@ src/Robot.cpp.s:
 	$(MAKE) -f CMakeFiles/Robot.dir/build.make CMakeFiles/Robot.dir/src/Robot.cpp.s
 .PHONY : src/Robot.cpp.s
 
+src/connection.o: src/connection.cpp.o
+
+.PHONY : src/connection.o
+
+# target to build an object file
+src/connection.cpp.o:
+	$(MAKE) -f CMakeFiles/Robot.dir/build.make CMakeFiles/Robot.dir/src/connection.cpp.o
+.PHONY : src/connection.cpp.o
+
+src/connection.i: src/connection.cpp.i
+
+.PHONY : src/connection.i
+
+# target to preprocess a source file
+src/connection.cpp.i:
+	$(MAKE) -f CMakeFiles/Robot.dir/build.make CMakeFiles/Robot.dir/src/connection.cpp.i
+.PHONY : src/connection.cpp.i
+
+src/connection.s: src/connection.cpp.s
+
+.PHONY : src/connection.s
+
+# target to generate assembly for a file
+src/connection.cpp.s:
+	$(MAKE) -f CMakeFiles/Robot.dir/build.make CMakeFiles/Robot.dir/src/connection.cpp.s
+.PHONY : src/connection.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -189,6 +216,9 @@ help:
 	@echo "... src/Robot.o"
 	@echo "... src/Robot.i"
 	@echo "... src/Robot.s"
+	@echo "... src/connection.o"
+	@echo "... src/connection.i"
+	@echo "... src/connection.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

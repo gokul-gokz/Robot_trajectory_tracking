@@ -74,7 +74,7 @@ void Robot::Inverse_kinematics(float cartesian_positions[])
     //std::vector<std::vector<float> > All_IK_solution;
     std::vector<float> IK_solution;
     std::vector<float> closest_solution;
-    theta1=atan2(HT_BasetoEF(1,3),HT_BasetoEF(0,3));
+    theta1=atan2(y,x);
     D=(pow(x-a1*cos(theta1),2)+pow(y-a1*sin(theta1),2)+pow(z,2)-pow(a2,2)-pow(a3,2))/(2*a2*a3);
     theta3[0]=atan2(sqrt(1-pow(D,2)),D);
     theta3[1]=atan2(-sqrt(1-pow(D,2)),D);
@@ -83,12 +83,8 @@ void Robot::Inverse_kinematics(float cartesian_positions[])
     theta2[2]=atan2(z,sqrt(pow(x-a1*cos(theta1),2)+pow(y-a1*sin(theta1),2)))-atan2(a3*sin(theta3[1]),a2+a3*cos(theta3[1]));
     theta2[3]=atan2(z,-sqrt(pow(x-a1*cos(theta1),2)+pow(y-a1*sin(theta1),2)))-atan2(a3*sin(theta3[1]),a2+a3*cos(theta3[1]));
 
-    for(int i=0;i<2;i++)
-    {
 
-    }
-
-
+    IK_solutions.clear();
     IK_solution.push_back(fmod(theta1,2*M_PI));
     IK_solution.push_back(fmod(theta2[0],2*M_PI));
     IK_solution.push_back(fmod(theta3[0],2*M_PI));
@@ -116,27 +112,31 @@ void Robot::Inverse_kinematics(float cartesian_positions[])
     validate_IK_solutions();
 
     //float current_position[]={0,0,0};
-//    closest_solution=closest_IK_solutions(current_position);
+    //closest_solution=closest_IK_solutions(current_position);
 //    std::cout<<"Solution:"<<std::endl<<closest_solution[0]<<std::endl<<closest_solution[1]<<std::endl<<closest_solution[2];
 
 }
 
 void Robot:: validate_IK_solutions()
 {
-
+    valid_ik_solutions.clear();
     for (int i=0;i<IK_solutions.size();i++)
     {
         if (IK_solutions[i][0]>=joint_min_limits[0] and IK_solutions[i][1]>=joint_min_limits[1] and IK_solutions[i][2]>=joint_min_limits[2] and IK_solutions[i][0]<=joint_max_limits[0] and IK_solutions[i][1]<=joint_max_limits[1] and IK_solutions[i][2]<=joint_max_limits[2])
             valid_ik_solutions.push_back( IK_solutions[i]);
+            std::cout<<valid_ik_solutions[i][0];
+            std::cout<<valid_ik_solutions[i][1];
+            std::cout<<valid_ik_solutions[i][2];
       }
 }
 
-std::vector<float> Robot::closest_IK_solutions(float current_position[]) {
+std::vector<float> Robot::closest_IK_solutions(float current_position[],float goal_position[]) {
+    Inverse_kinematics(goal_position);
     float distance[valid_ik_solutions.size()];
     for (int i=0;i<valid_ik_solutions.size();i++)
     {
       distance[i]=sqrt(pow(valid_ik_solutions[i][0]-current_position[0],2)+ pow(valid_ik_solutions[i][1]-current_position[1],2)+pow(valid_ik_solutions[i][2]-current_position[2],2));
-      std::cout<<"distance="<<distance[i]<<std::endl;
+      //std::cout<<"distance="<<distance[i]<<std::endl;
     }
     float Min=distance[0];
     int index=0;
