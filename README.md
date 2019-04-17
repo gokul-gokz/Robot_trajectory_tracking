@@ -8,3 +8,35 @@ Sends the data through socket connection and receives data from the robot throug
 
 ### DH parameters and Joint Limits
  ![Parameter](/image/DH_table.png)
+ 
+### Inverse Kinematics equations
+ ![Parameter](/image/IK.png)
+ 
+ ## Code Organization
+ 
+ ### Header Files
+ 
+ #### Robot.h
+ Contains the class definition of the robot class
+ 
+ #### Connection.h
+ Contains the class definition of the connection class
+ 
+ #### Trajectory.h
+ Contains a function to load trajectory from text file and return as a vector
+ 
+ ### Source files
+ #### Robot.cpp
+ Contains the class declaration of tyeh robot class
+ 
+ #### Connection.cpp
+ Contains the class declafration of the comnection class
+ 
+ #### main.cpp
+ Contains the code for creating the robot object and make the robot follow a trajectory in joint space.
+ 
+ 
+ 
+ 
+ 
+ 
