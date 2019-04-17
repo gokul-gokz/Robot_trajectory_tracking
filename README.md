@@ -10,7 +10,7 @@ Sends the data through socket connection and receives data from the robot throug
  ![Parameter](/image/DH_table.png)
  
 ### Inverse Kinematics equations
- ![Parameter](/image/IK.png)
+ ![IK](/image/IK.png)
  
  ## Code Organization
  
