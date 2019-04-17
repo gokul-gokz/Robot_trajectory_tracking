@@ -37,6 +37,8 @@ Sends the data through socket connection and receives data from the robot throug
  
  ### Steps to run the code.
  1. Clone the repository
+ 2. cd cmake-build-debug
+ 3. Run the executable Robot
  
  
  
