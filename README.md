@@ -27,13 +27,17 @@ Sends the data through socket connection and receives data from the robot throug
  
  ### Source files
  #### Robot.cpp
- Contains the class declaration of tyeh robot class
+ Contains the class declaration of the robot class
  
  #### Connection.cpp
  Contains the class declafration of the comnection class
  
  #### main.cpp
  Contains the code for creating the robot object and make the robot follow a trajectory in joint space.
+ 
+ ### Steps to run the code.
+ 1. Clone the repository
+ 
  
  
  
