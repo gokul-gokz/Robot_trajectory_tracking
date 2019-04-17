@@ -1086,19 +1086,13 @@ fstream
 iostream
 -
 
-/home/gokul/Robot_Ik_trajectory_tracking/src/Robot.cpp
-Robot.h
--
-math.h
--
-
 /home/gokul/Robot_Ik_trajectory_tracking/src/connection.cpp
 Connection.h
 /home/gokul/Robot_Ik_trajectory_tracking/src/Connection.h
 iostream
 /home/gokul/Robot_Ik_trajectory_tracking/src/iostream
 stdlib.h
-/home/gokul/Robot_Ik_trajectory_tracking/src/stdlib.h
+-
 
 /home/gokul/Robot_Ik_trajectory_tracking/src/main.cpp
 Robot.h

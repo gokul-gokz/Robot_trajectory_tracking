@@ -1,6 +1,6 @@
 #include "Connection.h"
 #include "iostream"
-#include "stdlib.h"
+#include <stdlib.h>
 
 Connection::Connection(int data_s)
 {
@@ -59,7 +59,8 @@ int Connection::receive(std::vector<unsigned char> &data)
         for(int i=0;i<data_size;i++)
         {
             buffer_data.clear();
-            buffer_data.push_back((float)data[i]);
+
+            //buffer_data.push_back((float)data[i]);
         }
 
         success= close();

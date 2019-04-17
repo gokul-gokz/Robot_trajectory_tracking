@@ -39,6 +39,7 @@ std::vector<std::vector<float> > trajectory_waypoints( const char input_file[])
         if(flag) {
             //read the data and push it into the vector
             input >> data;
+           // std::cout<<data<<std::endl;
             w.push_back(data);
 
             counter++;
@@ -53,6 +54,13 @@ std::vector<std::vector<float> > trajectory_waypoints( const char input_file[])
         }
     }
     input.close();
+
+    for (int i=0;i<7;i++)
+    {
+        for(int j=0;j<4;j++)
+            std::cout<<Waypoints[i][j]<<std::endl;
+        //std::cout<<std::endl;
+    }
 
     return Waypoints;
 }
