@@ -40,6 +40,10 @@ Sends the data through socket connection and receives data from the robot throug
  2. cd cmake-build-debug
  3. Run the executable Robot
  
+ ### Bugs
+ 1. Reading the trajectory waypoints from the text file using fstream is buggier as it is not able parse the points consistently. Will be fixed soon.
+ 
+ 
  
  
  
