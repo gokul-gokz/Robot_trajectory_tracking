@@ -433,5 +433,6 @@ CMakeFiles/Robot.dir/src/main.cpp.o: ../include/Eigen/src/plugins/CommonCwiseUna
 CMakeFiles/Robot.dir/src/main.cpp.o: ../include/Eigen/src/plugins/MatrixCwiseBinaryOps.h
 CMakeFiles/Robot.dir/src/main.cpp.o: ../include/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 CMakeFiles/Robot.dir/src/main.cpp.o: ../include/Robot.h
+CMakeFiles/Robot.dir/src/main.cpp.o: ../include/Trajectory.h
 CMakeFiles/Robot.dir/src/main.cpp.o: ../src/main.cpp
 

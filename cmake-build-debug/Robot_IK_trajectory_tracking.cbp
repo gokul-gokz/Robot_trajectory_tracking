@@ -88,6 +88,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/gokul/Robot_Ik_trajectory_tracking/include/Trajectory.h">
+			<Option target="Robot"/>
+		</Unit>
 		<Unit filename="/home/gokul/Robot_Ik_trajectory_tracking/src/Robot.cpp">
 			<Option target="Robot"/>
 		</Unit>

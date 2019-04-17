@@ -1,67 +1,22 @@
 #include<Robot.h>
-#include <fstream>
+#include <Trajectory.h>
 #include <Connection.h>
 using namespace std;
-
-std::vector<std::vector<float> > trajectory_waypoints( const char input_file[])
-{
-    std::ifstream input;
-    std::vector<std::vector<float> > Waypoints;
-    std::vector<float> w;
-    int counter;
-    float data;
-    input.open(input_file);
-    bool flag=true;
-    cout << "Reading from the file" << endl;
-    while(!input.eof()) {
-
-        if (input.bad()) {
-            cout << "Unable to read the file" << endl;
-            flag=false;
-
-        } else if (input.fail() and !input.eof()) {
-            cout << "Invalid_input" << endl;
-            flag=false;
-
-        }
-        if(flag) {
-
-            input >> data;
-            w.push_back(data);
-            //cout << w[counter] << endl;
-            counter++;
-            if (counter>=4)
-            {
-                Waypoints.push_back(w);
-                w.clear();
-                counter=0;
-
-            }
-        }
-    }
-   input.close();
-
-//    for (int i=0;i<7;i++)
-//    {
-//        for (int j=0;j<4;j++)
-//        {
-//            cout<<Waypoints[i][j]<<endl;
-//        }
-//    }
-    return Waypoints;
-}
-
-
 
 int main() {
     // Vector for extracting the waypoints
     std::vector<std::vector<float> > Waypoints;
+    std::vector<unsigned char > commanded_position;
+    std::vector<unsigned char > current_position;
+
     bool is_running = true;
+
+    //Assign the joint limits
     float j_min_limits[3] = {-M_PI, -M_PI / 2, -M_PI};
     float j_max_limits[3] = {M_PI, M_PI / 2, M_PI};
 
     //Location of the file which has the trajectory
-    char input_file[60] = "input.txt";
+    char input_file[60] = "/home/gokul/Robot_Ik_trajectory_tracking/input.txt";
     float t = 0;
     Waypoints = trajectory_waypoints(input_file);
 
@@ -72,11 +27,17 @@ int main() {
     //Initialize the robot with DH param and joint limits
     Robot R1(3, m1, j_min_limits, j_max_limits);
 
+    //Create a connection with packet data size 3(three angles)
+    Connection s1(3);
+
     //Command the robot to the start point of the trajectory
-    float current[] = {0.5, 0.5, 0};
+    float current[] = {0, 0, 0};
 
     //Extract the start point of trajectory
     float start_waypoint[] = {Waypoints[0][0], Waypoints[0][1], Waypoints[0][2]};
+    std::cout<<start_waypoint[0]<<std::endl;
+    std::cout<<start_waypoint[1]<<std::endl;
+    std::cout<<start_waypoint[2]<<std::endl;
 
     //Initialize joint angle increment
     float joint_angle_increment[] = {0, 0, 0};
@@ -108,15 +69,37 @@ int main() {
 
         for(int j=0;j<time_step;j++) {
 
+            // Receive the current position from the robot
+            if(s1.receive(current_position))
+                std::cout<<"Current position received successfully"<<std::endl;
+            else
+            {
+                std::cout<<"Unable to read the current position"<<std::endl;
+                break;
+            }
+
             //Increment the current position
             current[0] = current[0] + joint_angle_increment[0];
             current[1] = current[1] + joint_angle_increment[1];
             current[2] = current[2] + joint_angle_increment[2];
 
+            commanded_position.push_back(current[0]);
+            commanded_position.push_back(current[1]);
+            commanded_position.push_back(current[2]);
+
             std::cout << "Waypoint " << i << ":Joint_angles" << std::endl;
             std::cout << current[0] << std::endl;
             std::cout << current[1] << std::endl;
             std::cout << current[2] << std::endl;
+
+            //Send the calculated joint angle through the socket
+            if(s1.send(commanded_position))
+            {
+                cout<<"Commanded successfully"<<std::endl;
+            } else
+            {
+                cout<<"Socket communication failure"<<std::endl;
+            }
 
         }
     }

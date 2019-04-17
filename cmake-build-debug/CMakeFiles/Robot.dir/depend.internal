@@ -434,4 +434,5 @@ CMakeFiles/Robot.dir/src/main.cpp.o
  ../include/Eigen/src/plugins/MatrixCwiseBinaryOps.h
  ../include/Eigen/src/plugins/MatrixCwiseUnaryOps.h
  ../include/Robot.h
+ ../include/Trajectory.h
  /home/gokul/Robot_Ik_trajectory_tracking/src/main.cpp

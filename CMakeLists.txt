@@ -6,10 +6,8 @@ include_directories(
         include
         ${Eigen3_INCLUDE_DIRS}
 )
-add_executable(Robot src/Robot.cpp src/main.cpp src/connection.cpp)
+add_executable(Robot src/Robot.cpp src/main.cpp src/connection.cpp include/Trajectory.h)
 target_link_libraries (Robot Eigen3::Eigen)
 
-#include_directories( include ${OpenCV_INCLUDE_DIRS} )
-#add_executable(harris_corner harris.cpp)
-#target_link_libraries( harris_corner ${OpenCV_LIBS})
+
 
