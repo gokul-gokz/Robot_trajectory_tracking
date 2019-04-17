@@ -6,5 +6,5 @@ Loads waypoints of trajectory from a text file and calculates the trajectory con
 
 Sends the data through socket connection and receives data from the robot through the socket connection.
 
-### DH parameters
-
+### DH parameters and Joint Limits
+ ![Parameter](/image/DH_table.png)
